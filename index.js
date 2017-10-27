@@ -22,5 +22,5 @@ io.on('connection', function(socket){
 });
 
 http.listen(3000, function(){
-	console.log('Listening on 127.0.0.1:3000');
+	console.log('Listening on localhost:3000');
 });
