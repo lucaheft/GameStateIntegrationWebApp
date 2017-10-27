@@ -1,0 +1,237 @@
+*{
+	color: #e5e5e5;
+	font-family: 'Roboto', sans-serif;
+}
+
+body{
+	background-color: #0A0A0A;
+}
+
+#players_ct{
+	width: 30%;
+	height: 39vw;
+	max-height: 350px;
+	padding: 10px;
+}
+
+#players_t{
+	position: absolute;
+	top: 0;
+	left: 70%;
+	width: 30%;
+	height: 39vw;
+	max-height: 350px;
+	padding: 10px;
+}
+
+.playercontainer{
+	position: relative;
+	width: 100%;
+	height: 20%;
+	margin-bottom: 5px;
+}
+
+.player_ct_left{
+	width: 75%;
+	height: 100%;
+	border: 1px solid white;
+}
+
+.player_t_right{
+	position: absolute;
+	left: 25%;
+	width: 75%;
+	height: 100%;
+	border: 1px solid white;
+}
+
+.inventory{
+	width: 100%;
+	height: 50%;
+	background-color: #464646;
+}
+
+.helper{
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.middle-left_ct{
+	margin-left: 5px;
+	padding: 2px 0;
+	height: 100%;
+}
+
+.middle-right_ct{
+	float: right;
+	margin-right: 5px;
+	padding: 5px 0;
+	height: 100%;
+}
+
+.middle-left_t{
+	margin-left: 5px;
+	padding: 5px 0;
+	transform: scale(-1,1);
+	height: 100%;
+}
+
+.middle-right_t{
+	float: right;
+	margin-right: 5px;
+	padding: 2px 0;
+	height: 100%;
+}
+
+.health_ct{
+	position: relative;
+	width: 100%;
+	height: 50%;
+}
+
+.health_t{
+	position: relative;
+	width: 100%;
+	height: 50%;
+}
+
+.healthpercentage_ct{
+	height: 100%;
+	background-color: #6086A4;
+}
+
+.healthpercentage_t{
+	float: right;
+	height: 100%;
+	background-color: #AA922D;
+}
+
+.healthtxt_ct{
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	transform: translate(0,-50%);
+	margin-left: 3px;
+	width: 25px;
+}
+
+.playername_ct{
+	position: absolute;
+	top: 50%;
+	transform: translate(0,-50%);
+	margin-left: 40px;
+	font-weight: 700;
+}
+
+.healthtxt_t{
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	right: 0;
+	transform: translate(0,-50%);
+	margin-right: 3px;
+	width: 25px;
+}
+
+.playername_t{
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translate(0,-50%);
+	margin-right: 38px;
+	font-weight: 700;
+}
+
+.weapon3_ct{
+	max-width: 100%;
+}
+
+.player_ct_right{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 75%;
+	width: 25%;
+}
+
+.player_t_left{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 25%;
+	
+}
+
+.weapon3_t{
+	float: right;
+	transform: scale(-1,1);
+	max-width: 100%;
+}
+
+#map{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 35%;
+	height: auto;
+	transform: translate(-50%,0);
+	-webkit-transform: translate(-50%, 0);
+}
+
+.img-responsive{
+	width: 100%;
+	height: auto;
+}
+
+.playerpos{
+	position: absolute;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+
+.playerposname{
+	position: absolute;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	font-weight: 700;
+	text-shadow: 2px 2px #000;
+}
+
+.money_ct{
+	position: absolute;
+	left: 5px;
+	bottom: 10px;
+	color: green;
+	font-weight: 700;
+}
+
+.money_t{
+	position: absolute;
+	right: 5px;
+	bottom: 10px;
+	color: green;
+	font-weight: 700;
+}
+
+#gameinfo{
+	position: absolute;
+	left: 30%;
+	top: 35vw;
+	width: 40%;
+	padding-top: 10px;
+	text-align: center;
+}
+
+#score{
+	font-size: 70px;
+	font-weight: 700;
+}
+
+.info{
+	font-weight: 700;
+}
+
+#time{
+	font-size: 35px;
+}
