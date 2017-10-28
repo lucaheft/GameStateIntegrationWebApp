@@ -15,6 +15,7 @@ app.post('/data', function(req, res){
 	res.sendStatus(200);
 	io.emit('update', req.body);
 	console.log('Sent update request to clients.......');
+	//console.log('%j', req.body);
 });
 
 io.on('connection', function(socket){
