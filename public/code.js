@@ -1,6 +1,29 @@
+var dust2offset = [2550,1350];
+var dust2size = [4620,4650];
+
+var mirageoffset = [3180,3400];
+var miragesize = [5010,5110];
+
+var cacheoffset = [2050,2360];
+var cachesize = [5650,5550];
+
+var infernooffset = [2100,1150];
+var infernosize = [5000,5000];
+
+var overpassoffset = [4940,3520];
+var overpasssize = [5500,5290];
+
+var cbbleoffset = [3820,3080];
+var cbblesize = [6100,6150];
+
+var trainoffset = [2470,2430];
+var trainsize = [4780,4850];
+
+var nukeoffset = [3330,4250];
+var nukesize = [7000,7100];
+
 $( document ).ready(function() {
-	var dust2offset = [2550,1350];
-	var dust2size = [4620,4650];
+	
 	var socket = io();
 	socket.on('update', function(data){
 		var updateoffset = performance.now() - lastupdate;
@@ -10,9 +33,11 @@ $( document ).ready(function() {
 		if(data.allplayers == null)
 			return;
 		
-		// Remove old positions and names on map
-		$('.playerpos').remove();
-		$('.playerposname').remove();
+		// Clear map
+		$('#map').empty();
+		
+		//Add map image
+		$('#map').append('<img class="img-responsive" src="/public/maps/' + data.map.name + '.jpg">')
 		
 		// Clear player stats
 		$('#players_ct').empty();
@@ -26,30 +51,13 @@ $( document ).ready(function() {
 		
 		// Iterate through each player
 		jQuery.each(data.allplayers, function(key, player){
-			// Get team
-			if(player.team == 'T'){
-				var team = "t";
-			}
-			else{
-				var team = "ct";
-			}
+			
 			// Add player to scoreboard
-			addPlayer(player);
+			addPlayerInfo(player);
 			
-			// Get position and calculate percentage
-			var positions = player.position.split(',');
-			var x = parseFloat(positions[0]);
-			var y = parseFloat(positions[1]);
-			x = x + dust2offset[0];
-			y = y + dust2offset[1];
-			var xp = (x/dust2size[0])*100;
-			var yp = (1 - (y/dust2size[1]))*100;
+			// Add player to map
+			addPlayerPosition(player, data.map.name);
 			
-			// Add new position and name to map if alive
-			if(player.state.health > 0){
-				$('#map').append('<img class="playerpos" style="left:' + xp + '%;top:' + yp + '%" src="/public/' + team + '.png">');
-				$('#map').append('<span class="playerposname" style="left:' + xp + '%;top:calc(' + yp + '% + 15px)">' + player.name + '</span>');
-			}
 		});
 		var p2 = performance.now();
 		console.log('Time since last update: ' + updateoffset + ' ms.');
@@ -59,7 +67,61 @@ $( document ).ready(function() {
 
 var lastupdate = 0;
 
-function addPlayer(player){
+function addPlayerPosition(player, mapname){
+	// Add new position and name to map if alive
+	if(player.state.health > 0){
+		// Get correct offsets
+		var offset;
+		var size;
+		switch(mapname){
+			case "de_mirage":
+				offset = mirageoffset;
+				size = miragesize;
+				break;
+			case "de_cache":
+				offset = cacheoffset;
+				size = cachesize;
+				break;
+			case "de_inferno":
+				offset = infernooffset;
+				size = infernosize;
+				break;
+			case "de_overpass":
+				offset = overpassoffset;
+				size = overpasssize;
+				break;
+			case "de_cbble":
+				offset = cbbleoffset;
+				size = cbblesize;
+				break;
+			case "de_train":
+				offset = trainoffset;
+				size = trainsize;
+				break;
+			case "de_nuke":
+				offset = nukeoffset;
+				size = nukesize;
+				break;
+			default:
+				offset = dust2offset;
+				size = dust2size;
+					  }
+		
+		// Get position and calculate percentage
+		var positions = player.position.split(',');
+		var x = parseFloat(positions[0]);
+		var y = parseFloat(positions[1]);
+		x = x + offset[0];
+		y = y + offset[1];
+		var xp = (x/size[0])*100;
+		var yp = (1 - (y/size[1]))*100;
+
+		$('#map').append('<img class="playerpos" style="left:' + xp + '%;top:' + yp + '%" src="/public/' + player.team + '.png">');
+		$('#map').append('<span class="playerposname" style="left:' + xp + '%;top:calc(' + yp + '% + 15px)">' + player.name + '</span>');
+	}
+}
+
+function addPlayerInfo(player){
 	var pistol = '';
 	var knife = '';
 	var grenade = '';
