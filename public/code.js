@@ -130,6 +130,7 @@ function addPlayerInfo(player){
 	var taser = '';
 	var defuser = '';
 	var armor = '';
+	var killcount = '';
 	
 	jQuery.each(player.weapons, function(key, weapon){
 		switch(weapon.type){
@@ -165,6 +166,11 @@ function addPlayerInfo(player){
 	if(player.state.defusekit)
 		defuser = '/public/csgo_icons/item_defuser.svg';
 	
+	if(player.state.round_kills > 0 && player.team == 'T')
+		killcount = '<span class="killcount_t">x' + player.state.round_kills + '</span><img class="killimage_t" src="/public/csgo_icons/skull.png">';
+	else if(player.state.round_kills > 0)
+		killcount = '<span class="killcount_ct">' + player.state.round_kills + 'x</span><img class="killimage_ct" src="/public/csgo_icons/skull.png">';
+	
 	if(!rifle){
 		rifle = pistol;
 		pistol = '';
@@ -188,8 +194,8 @@ function addPlayerInfo(player){
 	}
 	
 	if(player.team == 'T'){
-		$('#players_t').append('<div class="playercontainer"><div class="player_t_right"><div class="health_t"><div style="width:'+player.state.health+'%;" class="healthpercentage_t"></div><span class="playername_t">'+player.name+'</span><span class="healthtxt_t">'+player.state.health+'</span></div><div class="inventory"><span class="helper"></span>' + armor + c4 + pistol + grenade + '</div></div><div class="player_t_left"><img class="weapon3_t" src="' + rifle + '"><span class="money_t">' + player.state.money + ' $</span></div></div>');
+		$('#players_t').append('<div class="playercontainer"><div class="player_t_right"><div class="health_t"><div style="width:'+player.state.health+'%;" class="healthpercentage_t"></div>' + killcount + '<span class="playername_t">'+player.name+'</span><span class="healthtxt_t">'+player.state.health+'</span></div><div class="inventory"><span class="helper"></span>' + armor + c4 + pistol + grenade + '</div></div><div class="player_t_left"><img class="weapon3_t" src="' + rifle + '"><span class="money_t">' + player.state.money + ' $</span></div></div>');
 	} else {
-		$('#players_ct').append('<div class="playercontainer"><div class="player_ct_left"><div class="health_ct"><div style="width:'+player.state.health+'%;" class="healthpercentage_ct"></div><span class="healthtxt_ct">'+player.state.health+'</span><span class="playername_ct">'+player.name+'</span></div><div class="inventory"><span class="helper"></span>' + armor + '<img class="middle-left_ct" src="' + defuser + '">' + pistol + taser + grenade + '</div></div><div class="player_ct_right"><img class="weapon3_ct" src="'+ rifle +'"><span class="money_ct">' + player.state.money + ' $</span></div></div>');
+		$('#players_ct').append('<div class="playercontainer"><div class="player_ct_left"><div class="health_ct"><div style="width:'+player.state.health+'%;" class="healthpercentage_ct"></div><span class="healthtxt_ct">'+player.state.health+'</span><span class="playername_ct">'+player.name+'</span>' + killcount + '</div><div class="inventory"><span class="helper"></span>' + armor + '<img class="middle-left_ct" src="' + defuser + '">' + pistol + taser + grenade + '</div></div><div class="player_ct_right"><img class="weapon3_ct" src="'+ rifle +'"><span class="money_ct">' + player.state.money + ' $</span></div></div>');
 	}
 }

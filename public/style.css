@@ -143,6 +143,44 @@ body{
 	font-weight: 700;
 }
 
+.killcount_ct{
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translate(0,-50%);
+	font-size: 11px;
+	margin-top: 1px;
+}
+
+.killimage_ct{
+	position: absolute;
+	right: 2px;
+	top: 50%;
+	transform: translate(0,-50%);
+	height: 100%;
+	width: auto;
+	padding: 8px 0;
+}
+
+.killcount_t{
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	transform: translate(0,-50%);
+	font-size: 11px;
+	margin-top: 1px;
+}
+
+.killimage_t{
+	position: absolute;
+	left: 2px;
+	top: 50%;
+	transform: translate(0,-50%);
+	height: 100%;
+	width: auto;
+	padding: 8px 0;
+}
+
 .weapon3_ct{
 	max-width: 100%;
 }
