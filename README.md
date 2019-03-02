@@ -1,5 +1,7 @@
 # GameStateIntegrationWebApp
 
+# This project is no longer actively maintained.
+
 ## Setup
 
 - Make sure to add the cfg file to your CS:GO cfg directory! (before you start the game!)
